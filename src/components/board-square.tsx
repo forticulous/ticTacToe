@@ -1,10 +1,16 @@
 import * as React from 'react'
-import { BoardSquare } from '../redux/store'
+import { BoardSquare } from '../reducers'
 import * as styles from './board-square.css'
 
-export interface Props {
+export interface InertProps {
   type: BoardSquare,
 }
+
+export interface ActionProps {
+  clickSquare: () => void,
+}
+
+export type Props = InertProps & ActionProps
 
 const contentForSquare = (
   type: BoardSquare
@@ -16,9 +22,9 @@ const contentForSquare = (
       : ''
 }
 
-const BoardSquare = ({ type }: Props) => {
+const BoardSquare = ({ type, clickSquare }: Props) => {
   return (
-    <div className={styles.square}>
+    <div className={styles.square} onClick={clickSquare}>
       <div>
         {contentForSquare(type)}
       </div>

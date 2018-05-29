@@ -1,28 +1,22 @@
-import { createStore } from 'redux'
+import { createStore, combineReducers } from 'redux'
 import { AppAction } from './app-action'
-
-export type BoardSquare = 'cross' | 'circle' | 'blank'
+import {
+  CurrentTurnState,
+  currentTurnReducer as currentTurn,
+  BoardState,
+  boardReducer as board,
+} from '../reducers'
 
 export interface GlobalState {
-  board: Array<Array<BoardSquare>>,
+  board: BoardState,
+  currentTurn: CurrentTurnState,
 }
 
-const initialState: GlobalState = {
-  board: [
-    ['cross', 'blank', 'blank'],
-    ['blank', 'cross', 'blank'],
-    ['blank', 'blank', 'cross'],
-  ],
-}
+const globalReducer = combineReducers({
+  board,
+  currentTurn,
+})
 
-const globalReducer = (
-  state: GlobalState,
-  action: AppAction,
-): GlobalState => {
-  // TODO: combine all reducers here
-  return state
-}
-
-const store = createStore<GlobalState, AppAction, {}, {}>(globalReducer, initialState)
+const store = createStore<GlobalState, AppAction, {}, {}>(globalReducer)
 
 export default store

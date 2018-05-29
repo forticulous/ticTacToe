@@ -1,14 +1,22 @@
-import { connect } from 'react-redux'
+import { connect, Dispatch } from 'react-redux'
 import { GlobalState } from '../redux/store'
-
-import Board, { Props } from '../components/board'
+import { playerClickSquare } from '../actions'
+import Board, { InertProps, ActionProps } from '../components/board'
 
 const mapStateToProps = (
   state: GlobalState
-): Props => {
+): InertProps => {
   return {
     board: state.board,
   }
 }
 
-export default connect(mapStateToProps)(Board)
+const mapDispatchToProps = (
+  dispatch: Dispatch,
+): ActionProps => {
+  return {
+    clickBoard: (row: number, col: number) => dispatch(playerClickSquare(row, col))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(Board)

@@ -1,6 +1,8 @@
-// TODO: Create real actions and remove this one
-interface TempAction {
-  type: 'TEMP',
-}
+import {
+  NextPlayerTurnAction,
+  PlayerClickSquareAction,
+} from '../actions'
 
-export type AppAction = TempAction
+export type AppAction =
+  | NextPlayerTurnAction
+  | PlayerClickSquareAction

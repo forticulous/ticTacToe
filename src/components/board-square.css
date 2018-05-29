@@ -7,5 +7,7 @@
   height: 5rem;
   justify-content: center;
   margin: 0.25rem;
+  user-select: none;
+  -moz-user-select: none;
   width: 5rem;
 }
