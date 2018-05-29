@@ -4,7 +4,7 @@ import {
   CurrentTurnState,
   currentTurnReducer as currentTurn,
   BoardState,
-  boardReducer as board,
+  crossConcernReducer,
 } from '../reducers'
 
 export interface GlobalState {
@@ -12,10 +12,16 @@ export interface GlobalState {
   currentTurn: CurrentTurnState,
 }
 
-const globalReducer = combineReducers({
-  board,
-  currentTurn,
-})
+const globalReducer = (
+  state: GlobalState,
+  action: AppAction,
+): GlobalState => {
+  const intermediateState = crossConcernReducer(state, action)
+  return {
+    ...intermediateState,
+    currentTurn: currentTurn(intermediateState.currentTurn, action),
+  }
+}
 
 const store = createStore<GlobalState, AppAction, {}, {}>(globalReducer)
 

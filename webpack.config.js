@@ -7,7 +7,7 @@ module.exports = {
   entry: {
     main: './app.tsx',
   },
-  mode: 'development',
+  mode: 'production',
   module: {
     rules: [
       {

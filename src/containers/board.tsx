@@ -1,6 +1,6 @@
 import { connect, Dispatch } from 'react-redux'
 import { GlobalState } from '../redux/store'
-import { playerClickSquare } from '../actions'
+import { playerClickSquare, nextPlayerTurn } from '../actions'
 import Board, { InertProps, ActionProps } from '../components/board'
 
 const mapStateToProps = (
@@ -15,7 +15,10 @@ const mapDispatchToProps = (
   dispatch: Dispatch,
 ): ActionProps => {
   return {
-    clickBoard: (row: number, col: number) => dispatch(playerClickSquare(row, col))
+    clickBoard: (row: number, col: number) => {
+      dispatch(playerClickSquare(row, col))
+      dispatch(nextPlayerTurn())
+    }
   }
 }
 

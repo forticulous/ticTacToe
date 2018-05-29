@@ -1,12 +1,21 @@
 import { GlobalState } from '../redux/store'
 import { AppAction } from '../redux/app-action'
 
+const initialState: GlobalState = {
+  board: [
+    ['blank', 'blank', 'blank'],
+    ['blank', 'blank', 'blank'],
+    ['blank', 'blank', 'blank'],
+  ],
+  currentTurn: 'cross',
+}
+
 export type Player = 'cross' | 'circle'
 
 export type CurrentTurnState = Player
 
 export const currentTurnReducer = (
-  state: CurrentTurnState = 'cross',
+  state: CurrentTurnState = initialState.currentTurn,
   action: AppAction,
 ): CurrentTurnState => {
   switch (action.type) {
@@ -45,20 +54,17 @@ const setSquare = (
   return Array.of(row1, row2, row3)
 }
 
-const initialBoard: BoardState = [
-  ['blank', 'blank', 'cross'],
-  ['blank', 'cross', 'blank'],
-  ['cross', 'blank', 'blank'],
-]
-
-export const boardReducer = (
-  state: BoardState = initialBoard,
+export const crossConcernReducer = (
+  state: GlobalState = initialState,
   action: AppAction,
-): BoardState => {
+): GlobalState => {
   switch (action.type) {
     case 'PLAYER_CLICK_SQUARE':
-      // TODO: fix the hard-coded newValue  
-      return setSquare(state, action.row, action.column, 'cross')
+      return {
+        ...state,
+        board: setSquare(state.board, action.row, action.column,
+          state.currentTurn === 'cross' ? 'cross' : 'circle'),
+      }
     default:
       return state
   }
