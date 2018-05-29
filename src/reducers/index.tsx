@@ -48,10 +48,11 @@ const setSquare = (
   column: number,
   newValue: BoardSquare,
 ): BoardState => {
-  const row1 = row === 0 ? setColumn(board[0], column, newValue) : Array.from(board[0])
-  const row2 = row === 1 ? setColumn(board[1], column, newValue) : Array.from(board[1])
-  const row3 = row === 2 ? setColumn(board[2], column, newValue) : Array.from(board[2])
-  return Array.of(row1, row2, row3)
+  return Array.of(
+    row === 0 ? setColumn(board[0], column, newValue) : Array.from(board[0]),
+    row === 1 ? setColumn(board[1], column, newValue) : Array.from(board[1]),
+    row === 2 ? setColumn(board[2], column, newValue) : Array.from(board[2]),
+  )
 }
 
 export const crossConcernReducer = (
