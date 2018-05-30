@@ -14,7 +14,7 @@ export type Player = 'cross' | 'circle'
 
 export type CurrentTurnState = Player
 
-export const currentTurnReducer = (
+const currentTurnReducer = (
   state: CurrentTurnState = initialState.currentTurn,
   action: AppAction,
 ): CurrentTurnState => {
@@ -49,7 +49,7 @@ const setSquare = (
   })
 }
 
-export const crossConcernReducer = (
+const crossConcernReducer = (
   state: GlobalState = initialState,
   action: AppAction,
 ): GlobalState => {
@@ -62,5 +62,16 @@ export const crossConcernReducer = (
       }
     default:
       return state
+  }
+}
+
+export const globalReducer = (
+  state: GlobalState,
+  action: AppAction,
+): GlobalState => {
+  const intermediateState = crossConcernReducer(state, action)
+  return {
+    ...intermediateState,
+    currentTurn: currentTurnReducer(intermediateState.currentTurn, action),
   }
 }
