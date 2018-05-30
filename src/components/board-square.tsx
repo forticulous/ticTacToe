@@ -15,7 +15,7 @@ export type Props = InertProps & ActionProps
 const contentForSquare = (
   type: BoardSquare
 ) => {
-  return type === 'cross' 
+  return type === 'cross'
     ? 'X'
     : type === 'circle'
       ? 'O'
@@ -23,8 +23,13 @@ const contentForSquare = (
 }
 
 const BoardSquare = ({ type, clickSquare }: Props) => {
+  const clickIfBlank = () => {
+    if (type === 'blank') {
+      clickSquare()
+    }
+  }
   return (
-    <div className={styles.square} onClick={clickSquare}>
+    <div className={styles.square} onClick={clickIfBlank}>
       <div>
         {contentForSquare(type)}
       </div>
