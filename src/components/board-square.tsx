@@ -4,6 +4,7 @@ import * as styles from './board-square.css'
 
 export interface InertProps {
   type: BoardSquare,
+  gameInProgress: boolean,
 }
 
 export interface ActionProps {
@@ -22,9 +23,10 @@ const contentForSquare = (
       : ''
 }
 
-const BoardSquare = ({ type, clickSquare }: Props) => {
+const BoardSquare = ({ type, clickSquare, gameInProgress }: Props) => {
   const clickIfBlank = () => {
-    if (type === 'blank') {
+    if (gameInProgress &&
+        type === 'blank') {
       clickSquare()
     }
   }

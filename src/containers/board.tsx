@@ -8,6 +8,7 @@ const mapStateToProps = (
 ): InertProps => {
   return {
     board: state.board,
+    gameInProgress: state.gameStatus === 'in-progress',
   }
 }
 

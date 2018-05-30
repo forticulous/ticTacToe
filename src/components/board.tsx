@@ -5,6 +5,7 @@ import * as styles from './board.css'
 
 export interface InertProps {
   board: Array<Array<BoardSquare>>,
+  gameInProgress: boolean,
 }
 
 export interface ActionProps {
@@ -13,7 +14,7 @@ export interface ActionProps {
 
 export type Props = InertProps & ActionProps
 
-const Board = ({ board, clickBoard }: Props) => {
+const Board = ({ board, clickBoard, gameInProgress }: Props) => {
   return (
     <div className={styles.mainContent}>
       {[0, 1, 2].map(row => {
@@ -21,6 +22,7 @@ const Board = ({ board, clickBoard }: Props) => {
           <div className={styles.row}>
             {[0, 1, 2].map(col =>
               <BoardSquareComp
+                gameInProgress={gameInProgress}
                 type={board[row][col]}
                 clickSquare={clickBoard.bind(null, row, col)}
               />
