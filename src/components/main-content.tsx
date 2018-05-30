@@ -1,11 +1,11 @@
 import * as React from 'react'
 import Board from '../containers/board'
-import CurrentTurn from '../containers/current-turn'
+import GameStatus from '../containers/game-status'
 
 const MainContent = () => {
   return (
     <div>
-      <CurrentTurn/>
+      <GameStatus/>
       <Board/>
     </div>
   )

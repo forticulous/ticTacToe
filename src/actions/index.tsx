@@ -24,3 +24,13 @@ export const playerClickSquare = (
     column,
   }
 }
+
+export interface CheckWinnerAction {
+  type: 'CHECK_WINNER',
+}
+
+export const checkWinner = (): CheckWinnerAction => {
+  return {
+    type: 'CHECK_WINNER',
+  }
+}
