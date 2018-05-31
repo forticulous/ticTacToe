@@ -121,6 +121,8 @@ const crossConcernReducer = (
         default:
           return state
       }
+    case 'NEW_GAME':
+      return initialState
     default:
       return state
   }

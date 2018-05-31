@@ -34,3 +34,13 @@ export const checkWinner = (): CheckWinnerAction => {
     type: 'CHECK_WINNER',
   }
 }
+
+export interface NewGameAction {
+  type: 'NEW_GAME',
+}
+
+export const newGame = (): NewGameAction => {
+  return {
+    type: 'NEW_GAME',
+  }
+}
