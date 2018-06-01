@@ -1,6 +1,6 @@
 import { connect } from 'react-redux'
-import { GlobalState } from '../reducers'
 import GameStatus, { Props } from '../components/game-status'
+import { GlobalState } from '../reducers'
 
 const mapStateToProps = (
   state: GlobalState,

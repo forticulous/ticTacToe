@@ -1,5 +1,4 @@
 import { AppAction } from '../redux/app-action'
-import board from '../containers/board';
 
 export type BoardSquare = 'cross' | 'circle' | 'blank'
 
@@ -62,8 +61,8 @@ const checkBoard = (
   board: BoardState,
 ): GameStatus => {
   const samePlayer = (squares: Array<BoardSquare>) =>
-    squares.every(sq => sq === 'cross') ||
-    squares.every(sq => sq === 'circle')
+    squares.every((sq) => sq === 'cross') ||
+    squares.every((sq) => sq === 'circle')
 
   // check horizontal wins
   if (samePlayer(board[0])) {
@@ -93,7 +92,7 @@ const checkBoard = (
     return board[0][2] === 'cross' ? 'cross-wins' : 'circle-wins'
   }
   // check for draw
-  if (!board.some(row => row.some(sq => sq === 'blank'))) {
+  if (!board.some((row) => row.some((sq) => sq === 'blank'))) {
     return 'draw'
   }
 

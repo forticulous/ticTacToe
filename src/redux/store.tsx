@@ -1,9 +1,9 @@
-import { createStore, combineReducers } from 'redux'
-import { AppAction } from './app-action'
+import { combineReducers, createStore } from 'redux'
 import {
-  GlobalState,
   globalReducer,
+  GlobalState,
 } from '../reducers'
+import { AppAction } from './app-action'
 
 const store = createStore<GlobalState, AppAction, {}, {}>(globalReducer)
 

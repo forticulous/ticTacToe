@@ -13,6 +13,13 @@ module.exports = {
       {
         exclude: /node_modules/,
         include: path.resolve(__dirname, 'src'),
+        enforce: 'pre',
+        test: /\.tsx?$/,
+        use: 'tslint-loader',
+      },
+      {
+        exclude: /node_modules/,
+        include: path.resolve(__dirname, 'src'),
         test: /\.tsx?$/,
         use: 'ts-loader',
       },

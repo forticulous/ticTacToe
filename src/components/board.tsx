@@ -17,10 +17,10 @@ export type Props = InertProps & ActionProps
 const Board = ({ board, clickBoard, gameInProgress }: Props) => {
   return (
     <div className={styles.mainContent}>
-      {[0, 1, 2].map(row => {
+      {[0, 1, 2].map((row) => {
         return (
           <div className={styles.row}>
-            {[0, 1, 2].map(col =>
+            {[0, 1, 2].map((col) =>
               <BoardSquareComp
                 gameInProgress={gameInProgress}
                 type={board[row][col]}

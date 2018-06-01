@@ -1,7 +1,7 @@
 import { connect, Dispatch } from 'react-redux'
+import { checkWinner, nextPlayerTurn, playerClickSquare } from '../actions'
+import Board, { ActionProps, InertProps } from '../components/board'
 import { GlobalState } from '../reducers'
-import { playerClickSquare, nextPlayerTurn, checkWinner } from '../actions'
-import Board, { InertProps, ActionProps } from '../components/board'
 
 const mapStateToProps = (
   state: GlobalState

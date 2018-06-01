@@ -1,5 +1,5 @@
 import * as React from 'react'
-import { Player, GameStatus } from '../reducers'
+import { GameStatus, Player } from '../reducers'
 
 export interface Props {
   currentTurn: Player,

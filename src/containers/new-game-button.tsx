@@ -1,6 +1,6 @@
 import { connect, Dispatch } from 'react-redux'
-import NewGameButton, { ActionProps } from '../components/new-game-button'
 import { newGame } from '../actions'
+import NewGameButton, { ActionProps } from '../components/new-game-button'
 
 const mapDispatchToProps = (
   dispatch: Dispatch

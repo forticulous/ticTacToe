@@ -19,9 +19,9 @@ export const playerClickSquare = (
   column: number,
 ): PlayerClickSquareAction => {
   return {
-    type: 'PLAYER_CLICK_SQUARE',
-    row,
     column,
+    row,
+    type: 'PLAYER_CLICK_SQUARE',
   }
 }
 
