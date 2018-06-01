@@ -8,14 +8,19 @@ export interface Props {
 
 const GameStatus = ({ currentTurn, gameStatus }: Props) => {
   const messageForStatus = () => {
-    if (gameStatus === 'cross-wins') {
-      return 'X Wins!'
-    } else if (gameStatus === 'circle-wins') {
-      return 'O Wins!'
-    } else if (currentTurn === 'cross') {
-      return 'X\'s Turn'
-    } else {
-      return 'O\'s Turn'
+    switch (gameStatus) {
+      case 'cross-wins':
+        return 'X Wins!'
+      case 'circle-wins':
+        return 'O Wins!'
+      case 'draw':
+        return 'Game ended in a draw'
+      default:
+        if (currentTurn === 'cross') {
+          return 'X\'s Turn'
+        } else {
+          return 'O\'s Turn'
+        }
     }
   }
   return (
